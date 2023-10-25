@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace trpo2._4
 {
-    internal class Symbols
+    internal class Methods
     {
         public List<char> Listed(string text)
         {
@@ -63,6 +64,27 @@ namespace trpo2._4
             }
             return list;
         }
+        public bool Errors(string text, List<char> err)
+        {
+            int i = 0;
+            while (i != text.Length)
+            {
+                int b = 0;
+                while (b != err.Count())
+                {
+                    if (text[i] == err[b++])
+                    {
+                        return false;
+                    }
+                }
+                i++;
+            }
+            return true;
+        }
 
+        public bool IsPoint(string text)
+        {
+            return text[text.Length - 1] == '.';
+        }
     }
 }
